@@ -12,7 +12,7 @@
  Target Server Version : 130010 (130010)
  File Encoding         : 65001
 
- Date: 22/06/2023 00:15:43
+ Date: 22/06/2023 00:32:08
 */
 
 
@@ -157,6 +157,7 @@ CREATE TABLE "public"."laporan_kegiatan" (
   "kegiatan" varchar(255) COLLATE "pg_catalog"."default",
   "deskripsi" text COLLATE "pg_catalog"."default",
   "image" varchar(255) COLLATE "pg_catalog"."default",
+  "tanggal" timestamp(0),
   "created_at" timestamp(0),
   "updated_at" timestamp(0),
   "deleted_at" timestamp(0)
@@ -166,6 +167,7 @@ CREATE TABLE "public"."laporan_kegiatan" (
 -- ----------------------------
 -- Records of laporan_kegiatan
 -- ----------------------------
+INSERT INTO "public"."laporan_kegiatan" VALUES (1, 'Hijau', 'Person Tanggal', '1687368444.jpg', '2023-06-23 12:22:00', '2023-06-22 00:27:24', '2023-06-22 00:28:58', NULL);
 
 -- ----------------------------
 -- Table structure for master_area
@@ -317,7 +319,7 @@ INSERT INTO "public"."migrations" VALUES (11, '2023_06_08_051919_create_master_v
 INSERT INTO "public"."migrations" VALUES (12, '2023_06_08_034622_create_table_tiket', 6);
 INSERT INTO "public"."migrations" VALUES (14, '2023_06_08_034622_create_table_person_in_charge', 7);
 INSERT INTO "public"."migrations" VALUES (15, '2023_06_08_051558_create_master_type_kabel', 8);
-INSERT INTO "public"."migrations" VALUES (16, '2023_06_08_051558_create_laporan_kegiatan', 9);
+INSERT INTO "public"."migrations" VALUES (17, '2023_06_08_051558_create_laporan_kegiatan', 9);
 
 -- ----------------------------
 -- Table structure for person_in_charge
@@ -503,7 +505,7 @@ SELECT setval('"public"."master_vendor_id_seq"', 1, true);
 -- ----------------------------
 ALTER SEQUENCE "public"."migrations_id_seq"
 OWNED BY "public"."migrations"."id";
-SELECT setval('"public"."migrations_id_seq"', 16, true);
+SELECT setval('"public"."migrations_id_seq"', 17, true);
 
 -- ----------------------------
 -- Alter sequences owned by

@@ -28,6 +28,7 @@ class LaporanKegiatanController extends Controller
                 'kegiatan'  =>'required',
                 'image'     =>'required|mimes:jpeg,png,jpg|max:2048',
                 'deskripsi' =>'required',
+                'tanggal'   =>'required'
             ]);
 
             if($request->hasFile('image')){
@@ -43,6 +44,7 @@ class LaporanKegiatanController extends Controller
                 'kegiatan'      =>$request->kegiatan,
                 'image'         =>$fileName,
                 'deskripsi'     =>$request->deskripsi,
+                'tanggal'       =>$request->tanggal,
                 'created_at'    =>date('Y-m-d H:i:s')
             ];
             LaporanKegiatan::create($data);
@@ -61,6 +63,7 @@ class LaporanKegiatanController extends Controller
             $this->validate($request,[
                 'kegiatan'  =>'required',
                 'deskripsi' =>'required',
+                'tanggal'   =>'required'
             ]);
 
             if($request->hasFile('image')){
@@ -77,6 +80,7 @@ class LaporanKegiatanController extends Controller
                 'kegiatan'      =>$request->kegiatan,
                 'image'         =>$fileName,
                 'deskripsi'     =>$request->deskripsi,
+                'tanggal'       =>$request->tanggal,
                 'updated_at'    =>date('Y-m-d H:i:s')
             ];
             LaporanKegiatan::where('id', $request->id)->update($data);

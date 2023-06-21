@@ -16,7 +16,9 @@
     </h2>
     <div class="grid grid-cols-12 gap-6 mt-5">
         <div class="intro-y col-span-12 flex flex-wrap sm:flex-nowrap items-center mt-2">
+            @if(Auth::guard('users')->user()->role != 4)
             <button class="btn btn-primary shadow-md mr-2" data-tw-toggle="modal" data-tw-target="#tambah-modal">Tambah</button>
+            @endif
             <div class="dropdown" style="display:none;">
                 <button class="dropdown-toggle btn px-2 box" aria-expanded="false" data-tw-toggle="dropdown">
                     <span class="w-5 h-5 flex items-center justify-center"> <i class="w-4 h-4" data-lucide="plus"></i>
@@ -55,7 +57,10 @@
                         <th class="whitespace-nowrap">Kegiatan</th>
                         <th class="whitespace-nowrap">Deskripsi</th>
                         <th class="whitespace-nowrap">Image</th>
+                        <th class="whitespace-nowrap">Tanggal</th>
+                        @if(Auth::guard('users')->user()->role != 4)
                         <th class="whitespace-nowrap">Aksi</th>
+                        @endif
                     </tr>
                 </thead>
                 <tbody>
@@ -71,10 +76,13 @@
                             <a href="#" class="btn btn-dark mr-2 mb-2"> <i data-lucide="image-off" class="w-4 h-4"></i></a>
                             @endif
                         </td>
+                        <td>{{ tgl_indo($val->tanggal) }}</td>
+                        @if(Auth::guard('users')->user()->role != 4)
                         <td>
                             <button class="btn btn-sm btn-primary" data-tw-toggle="modal" data-tw-target="#update-modal" onclick="updateData(this)" data-item="{{ $val }}"><i data-lucide="edit" class="w-4 h-4"></i></button>
                             <button class="btn btn-sm btn-danger" data-tw-toggle="modal" data-tw-target="#delete-modal" onclick="DeleteData({{ $val->id }})"><i data-lucide="trash" class="w-4 h-4"></i></button>
                         </td>
+                        @endif
                     </tr>
                     @endforeach
                 </tbody>
@@ -100,6 +108,10 @@
                         <div class="col-span-12 sm:col-span-6">
                             <label for="modal-form-5" class="form-label">Image</label>
                             <input type="file" class="form-control" name="image" id="image" placeholder="..." required>
+                        </div>
+                        <div class="col-span-12 sm:col-span-6">
+                            <label for="modal-form-5" class="form-label">Tanggal</label>
+                            <input type="text" class="form-control tanggal" name="tanggal" id="tanggal" placeholder="..." required>
                         </div>
                         <div class="col-span-12 sm:col-span-12">
                             <label for="modal-form-5" class="form-label">Deskripsi</label>
@@ -134,6 +146,10 @@
                         <div class="col-span-12 sm:col-span-6">
                             <label for="modal-form-5" class="form-label">Image</label>
                             <input type="file" class="form-control" name="image" id="e_image" placeholder="...">
+                        </div>
+                        <div class="col-span-12 sm:col-span-6">
+                            <label for="modal-form-5" class="form-label">Tanggal</label>
+                            <input type="text" class="form-control tanggal" name="tanggal" id="e_tanggal" placeholder="..." required>
                         </div>
                         <div class="col-span-12 sm:col-span-12">
                             <label for="modal-form-5" class="form-label">Deskripsi</label>
@@ -184,6 +200,11 @@
 <script type="text/javascript">
     $(document).ready(function () {
         $('#table-kegiatan').DataTable();
+        
+        flatpickr(".tanggal", {
+            enableTime: true,
+            dateFormat: "Y-m-d H:i"
+        });
     });
 
     function updateData(obj){
@@ -192,6 +213,7 @@
         $('#e_id').val(item.id);
         $('#e_kegiatan').val(item.kegiatan);
         $('#e_deskripsi').val(item.deskripsi);
+        $('#e_tanggal').val(item.tanggal);
     }
     
     function DeleteData(id){

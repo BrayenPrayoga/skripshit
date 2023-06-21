@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('kegiatan')->nullable();
             $table->longText('deskripsi')->nullable();
             $table->string('image')->nullable();
+            $table->dateTime('tanggal')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

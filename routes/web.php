@@ -66,10 +66,10 @@ Route::namespace('App\Http\Controllers')->group(function () {
     
     Route::group(['middleware' => ['auth:users','AksesManager']], function() {
         Route::group(['prefix'=>'manager-laporan-weekly','as'=>'manager.laporan.weekly.'], function(){
-            Route::get('/', 'TiketController@index')->name('index');
+            Route::get('/', 'LaporanWeeklyController@index')->name('index');
         }); 
         Route::group(['prefix'=>'manager-laporan-kegiatan','as'=>'manager.laporan.kegiatan.'], function(){
-            Route::get('/', 'TiketController@index')->name('index');
+            Route::get('/', 'LaporanKegiatanController@index')->name('index');
         });
     });
 });

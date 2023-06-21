@@ -16,7 +16,9 @@
     </h2>
     <div class="grid grid-cols-12 gap-6 mt-5">
         <div class="intro-y col-span-12 flex flex-wrap sm:flex-nowrap items-center mt-2">
+            @if(Auth::guard('users')->user()->role != 4)
             <button class="btn btn-primary shadow-md mr-2" data-tw-toggle="modal" data-tw-target="#tambah-modal">Tambah</button>
+            @endif
             <div class="dropdown" style="display:none;">
                 <button class="dropdown-toggle btn px-2 box" aria-expanded="false" data-tw-toggle="dropdown">
                     <span class="w-5 h-5 flex items-center justify-center"> <i class="w-4 h-4" data-lucide="plus"></i>
@@ -97,8 +99,10 @@
                         <td>
                             <button class="btn btn-sm btn-warning" data-tw-toggle="modal" data-tw-target="#view-modal" onclick="ViewData(this)" data-item="{{ $val }}"><i data-lucide="eye" class="w-4 h-4"></i></button>
                             <button class="btn btn-sm btn-dark" data-tw-toggle="modal" data-tw-target="#view-tiket-modal" onclick="ViewTiketData({{ $val->id }})"><i data-lucide="ticket" class="w-4 h-4"></i></button>
+                            @if(Auth::guard('users')->user()->role != 4)
                             <button class="btn btn-sm btn-primary" data-tw-toggle="modal" data-tw-target="#update-modal" onclick="updateData(this)" data-item="{{ $val }}"><i data-lucide="edit" class="w-4 h-4"></i></button>
                             <button class="btn btn-sm btn-danger" data-tw-toggle="modal" data-tw-target="#delete-modal" onclick="DeleteData({{ $val->id }})"><i data-lucide="trash" class="w-4 h-4"></i></button>
+                            @endif
                         </td>
                     </tr>
                     @endforeach

@@ -46,4 +46,9 @@ class PersonInCharge extends Model
     {
         return $this->belongsTo('App\Models\MasterVendor','id_master_vendor','id')->withDefault();
     }
+    
+    public function Users()
+    {
+        return $this->belongsTo('App\Models\User','id_users','id')->withDefault();
+    }
 }

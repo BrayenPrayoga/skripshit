@@ -8,18 +8,24 @@ use App\Models\MasterTypeKabel;
 use App\Models\PersonInCharge;
 use App\Models\Tiket;
 use Illuminate\Http\Request;
+use Auth;
 
 class LaporanWeeklyController extends Controller
 {
     //
     public function index()
     {
+        $id_users = Auth::guard('users')->user()->id;
         $data['no'] = 1;
         $data['master_category'] = MasterCategory::orderBy('id','ASC')->get();
         $data['master_type_kabel'] = MasterTypeKabel::orderBy('id','ASC')->get();
         $data['master_status'] = MasterStatusTiket::where('role',1)->orderBy('id','ASC')->get();
         $data['master_status_pic'] = MasterStatusTiket::where('role',2)->orderBy('id','ASC')->get();
-        $data['person_in_charge'] = PersonInCharge::orderBy('id','ASC')->get();
+        if(Auth::guard('users')->user()->role == 2){
+            $data['person_in_charge'] = PersonInCharge::where('id_users', $id_users)->orderBy('id','ASC')->get();
+        }else{
+            $data['person_in_charge'] = PersonInCharge::orderBy('id','ASC')->get();
+        }
 
         return view('laporan-weekly', $data);
     }
@@ -66,6 +72,7 @@ class LaporanWeeklyController extends Controller
             ]);
 
             $data = [
+                'id_users'          =>Auth::guard('users')->user()->id,
                 'no'                =>$request->no,
                 'date'              =>$request->date,
                 'week'              =>$request->week,
@@ -157,6 +164,7 @@ class LaporanWeeklyController extends Controller
             ]);
 
             $data = [
+                'id_users'          =>Auth::guard('users')->user()->id,
                 'no'                =>$request->no,
                 'date'              =>$request->date,
                 'week'              =>$request->week,

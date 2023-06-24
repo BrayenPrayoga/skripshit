@@ -54,6 +54,9 @@
                 <thead class="table-dark">
                     <tr>
                         <th class="whitespace-nowrap">No.</th>
+                        @if(Auth::guard('users')->user()->role == 4)
+                        <th class="whitespace-nowrap">Nama</th>
+                        @endif
                         <th class="whitespace-nowrap">Nomer</th>
                         <th class="whitespace-nowrap">Date</th>
                         <th class="whitespace-nowrap">Week</th>
@@ -74,6 +77,9 @@
                     @foreach($person_in_charge as $val)
                     <tr>
                         <td>{{ $no++ }}.</td>
+                        @if(Auth::guard('users')->user()->role == 4)
+                        <td>{{ $val->Users->name }}</td>
+                        @endif
                         <td>{{ $val->no }}</td>
                         <td>{{ tgl_indo($val->date) }}</td>
                         <td>{{ $val->week }}</td>
@@ -99,7 +105,7 @@
                         <td>
                             <button class="btn btn-sm btn-warning" data-tw-toggle="modal" data-tw-target="#view-modal" onclick="ViewData(this)" data-item="{{ $val }}"><i data-lucide="eye" class="w-4 h-4"></i></button>
                             <button class="btn btn-sm btn-dark" data-tw-toggle="modal" data-tw-target="#view-tiket-modal" onclick="ViewTiketData({{ $val->id }})"><i data-lucide="ticket" class="w-4 h-4"></i></button>
-                            @if(Auth::guard('users')->user()->role != 4)
+                            @if(Auth::guard('users')->user()->role != 4 && $val->status == 1)
                             <button class="btn btn-sm btn-primary" data-tw-toggle="modal" data-tw-target="#update-modal" onclick="updateData(this)" data-item="{{ $val }}"><i data-lucide="edit" class="w-4 h-4"></i></button>
                             <button class="btn btn-sm btn-danger" data-tw-toggle="modal" data-tw-target="#delete-modal" onclick="DeleteData({{ $val->id }})"><i data-lucide="trash" class="w-4 h-4"></i></button>
                             @endif

@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('laporan_kegiatan', function (Blueprint $table) {
             $table->id();
+            $table->integer('id_users');
             $table->string('kegiatan')->nullable();
             $table->longText('deskripsi')->nullable();
             $table->string('image')->nullable();

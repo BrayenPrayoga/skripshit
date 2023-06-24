@@ -54,6 +54,9 @@
                 <thead class="table-dark">
                     <tr>
                         <th class="whitespace-nowrap">No.</th>
+                        @if(Auth::guard('users')->user()->role == 4)
+                        <th class="whitespace-nowrap">Nama</th>
+                        @endif
                         <th class="whitespace-nowrap">Kegiatan</th>
                         <th class="whitespace-nowrap">Deskripsi</th>
                         <th class="whitespace-nowrap">Image</th>
@@ -67,6 +70,9 @@
                     @foreach($laporan_kegiatan as $val)
                     <tr>
                         <td>{{ $no++ }}.</td>
+                        @if(Auth::guard('users')->user()->role == 4)
+                        <td>{{ $val->Users->name }}</td>
+                        @endif
                         <td>{{ $val->kegiatan }}</td>
                         <td>{{ $val->deskripsi }}</td>
                         <td>

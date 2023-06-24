@@ -16,13 +16,18 @@ class TiketController extends Controller
     //
     public function index()
     {
+        $id_users = Auth::guard('users')->user()->id;
         $data['no'] = 1;
         $data['master_tr_customer'] = MasterTransaksiCustomer::orderBy('id','ASC')->get();
         $data['master_area'] = MasterArea::orderBy('id','ASC')->get();
         $data['master_category'] = MasterCategory::orderBy('id','ASC')->get();
         $data['master_vendor'] = MasterVendor::orderBy('id','ASC')->get();
         $data['master_status'] = MasterStatusTiket::where('role',1)->orderBy('id','ASC')->get();
-        $data['tiket'] = Tiket::orderBy('id','ASC')->get();
+        if(Auth::guard('users')->user()->role == 1){
+            $data['tiket'] = Tiket::where('id_users', $id_users)->orderBy('id','ASC')->get();
+        }else{
+            $data['tiket'] = Tiket::orderBy('id','ASC')->get();
+        }
 
         return view('tiket', $data);
     }
@@ -51,6 +56,7 @@ class TiketController extends Controller
             ]);
 
             $data = [
+                'id_users'                      => Auth::guard('users')->user()->id,
                 'id_master_transaksi_customer'  => $request->id_master_transaksi_customer,
                 'TT_FLP'                        => $request->TT_FLP,
                 'id_master_area'                => $request->id_master_area,
@@ -99,6 +105,7 @@ class TiketController extends Controller
             ]);
 
             $data = [
+                'id_users'                      => Auth::guard('users')->user()->id,
                 'id_master_transaksi_customer'  => $request->id_master_transaksi_customer,
                 'TT_FLP'                        => $request->TT_FLP,
                 'id_master_area'                => $request->id_master_area,

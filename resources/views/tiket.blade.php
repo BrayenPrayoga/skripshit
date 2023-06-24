@@ -52,6 +52,9 @@
                 <thead class="table-dark">
                     <tr>
                         <th class="whitespace-nowrap">No.</th>
+                        @if(Auth::guard('users')->user()->role == 2)
+                        <th class="whitespace-nowrap">Nama</th>
+                        @endif
                         <th class="whitespace-nowrap">Transaksi Customer</th>
                         <th class="whitespace-nowrap">TT FLP</th>
                         <th class="whitespace-nowrap">Area</th>
@@ -75,6 +78,9 @@
                     @foreach($tiket as $val)
                     <tr>
                         <td>{{ $no++ }}.</td>
+                        @if(Auth::guard('users')->user()->role == 2)
+                        <td>{{ $val->Users->name }}</td>
+                        @endif
                         <td>{{ $val->MasterTransaksiCustomer->nama }}</td>
                         <td>{{ $val->TT_FLP }}</td>
                         <td>{{ $val->MasterArea->nama }}</td>
@@ -103,7 +109,7 @@
                             <button class="btn btn-sm btn-primary" data-tw-toggle="modal" data-tw-target="#update-modal" onclick="updateData(this)" data-item="{{ $val }}"><i data-lucide="edit" class="w-4 h-4"></i></button>
                             <button class="btn btn-sm btn-danger" data-tw-toggle="modal" data-tw-target="#delete-modal" onclick="DeleteData({{ $val->id }})"><i data-lucide="trash" class="w-4 h-4"></i></button>
                             @endif
-                            @if(Auth::guard('users')->user()->role == 2)
+                            @if(Auth::guard('users')->user()->role == 2 && $val->status == 1)
                             <button class="btn btn-sm btn-primary" data-tw-toggle="modal" data-tw-target="#update-status-modal" onclick="updateStatusData(this)" data-item="{{ $val }}"><i data-lucide="edit" class="w-4 h-4"></i></button>
                             @endif
                         </td>

@@ -13,8 +13,13 @@ class LaporanKegiatanController extends Controller
     //
     public function index()
     {
+        $id_users = Auth::guard('users')->user()->id;
         $data['no'] = 1;
-        $data['laporan_kegiatan'] = LaporanKegiatan::orderBy('id','ASC')->get();
+        if(Auth::guard('users')->user()->role == 3){
+            $data['laporan_kegiatan'] = LaporanKegiatan::where('id_users', $id_users)->orderBy('id','ASC')->get();
+        }else{
+            $data['laporan_kegiatan'] = LaporanKegiatan::orderBy('id','ASC')->get();
+        }
 
         return view('laporan-kegiatan', $data);
     }
@@ -41,6 +46,7 @@ class LaporanKegiatanController extends Controller
             }
 
             $data = [
+                'id_users'      => Auth::guard('users')->user()->id,
                 'kegiatan'      =>$request->kegiatan,
                 'image'         =>$fileName,
                 'deskripsi'     =>$request->deskripsi,
@@ -77,6 +83,7 @@ class LaporanKegiatanController extends Controller
             }
 
             $data = [
+                'id_users'      => Auth::guard('users')->user()->id,
                 'kegiatan'      =>$request->kegiatan,
                 'image'         =>$fileName,
                 'deskripsi'     =>$request->deskripsi,

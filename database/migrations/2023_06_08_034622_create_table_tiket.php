@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('tiket', function (Blueprint $table) {
             $table->id();
+            $table->integer('id_users');
             $table->integer('id_master_transaksi_customer')->nullable();
             $table->integer('TT_FLP')->nullable();
             $table->integer('id_master_area')->nullable();

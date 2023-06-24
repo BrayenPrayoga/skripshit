@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('person_in_charge', function (Blueprint $table) {
             $table->id();
+            $table->integer('id_users');
             $table->integer('no')->nullable();
             $table->dateTime('date')->nullable();
             $table->integer('week')->nullable();

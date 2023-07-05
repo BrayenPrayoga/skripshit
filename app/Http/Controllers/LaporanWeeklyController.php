@@ -5,10 +5,12 @@ namespace App\Http\Controllers;
 use App\Models\MasterCategory;
 use App\Models\MasterStatusTiket;
 use App\Models\MasterTypeKabel;
+use App\Models\Notifikasi;
 use App\Models\PersonInCharge;
 use App\Models\Tiket;
 use Illuminate\Http\Request;
 use Auth;
+use Session;
 
 class LaporanWeeklyController extends Controller
 {
@@ -25,6 +27,11 @@ class LaporanWeeklyController extends Controller
             $data['person_in_charge'] = PersonInCharge::where('id_users', $id_users)->orderBy('id','ASC')->get();
         }else{
             $data['person_in_charge'] = PersonInCharge::orderBy('id','ASC')->get();
+        }
+
+        if(isset($_GET['id'])){
+            Session::flash('info','Belum Membuat Laporan Mingguan');
+            Notifikasi::where('id', $_GET['id'])->update(['status'=>1]);
         }
 
         return view('laporan-weekly', $data);

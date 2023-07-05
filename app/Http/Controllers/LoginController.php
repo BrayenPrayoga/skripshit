@@ -30,6 +30,7 @@ class LoginController extends Controller
         if (Auth::guard('users')->attempt(['email' => $request->email, 'password' => $request->password, 'role' => 1])) { // Helpdesk
             return redirect()->intended('/dashboard');
         } else if (Auth::guard('users')->attempt(['email' => $request->email, 'password' => $request->password, 'role' => 2])) { // PIC
+            PushKeNotifikasi();
             return redirect()->intended('/dashboard');
         } else if (Auth::guard('users')->attempt(['email' => $request->email, 'password' => $request->password, 'role' => 3])) { // Maintenance Server
             return redirect()->intended('/dashboard');

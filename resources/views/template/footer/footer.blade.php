@@ -14,10 +14,9 @@
     <script type="text/javascript">
         Swal.fire({
             icon: 'success',
-            text: ' ',
-            title: '{{Session::get("success")}}',
-            showConfirmButton: false,
-            timer: 1500
+            title: 'Success',
+            text: '{{Session::get("success")}}',
+            showConfirmButton: true
         });
     </script>
     <?php
@@ -28,13 +27,25 @@
     <script type="text/javascript">
         Swal.fire({
             icon: 'error',
-            text: ' ',
-            title: '{{Session::get("error")}}',
-            showConfirmButton: false,
-            timer: 1500
+            title: 'Error',
+            text: '{{Session::get("error")}}',
+            showConfirmButton: true
         });
     </script>
     <?php
         Session::forget('error');
+    ?>
+@endif
+@if(Session::has('info'))
+    <script type="text/javascript">
+        Swal.fire({
+            icon: 'info',
+            title: 'Information',
+            text: '{{Session::get("info")}}',
+            showConfirmButton: true
+        });
+    </script>
+    <?php
+        Session::forget('info');
     ?>
 @endif

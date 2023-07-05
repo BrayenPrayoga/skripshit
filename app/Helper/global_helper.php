@@ -2,7 +2,7 @@
 
 use App\Models\Role;
 use App\Models\Notifikasi;
-use App\Models\User;
+use App\Models\PersonInCharge;
 
 if (! function_exists('tgl_indo')) {
     function tgl_indo($tgl){
@@ -42,12 +42,17 @@ if (! function_exists('PushKeNotifikasi')) {
     {
         $hari = date('w');
         if($hari = 5){
-            Notifikasi::insert([
-                'id_dari'       => 0,
-                'id_untuk'      => Auth::guard('users')->user()->id,
-                'keterangan'    => 'Belum Membuat Laporan Mingguan Pada Minggu Ini',
-                'status'        => 0
-            ]);
+            $dateperson = date( "Y-m-d");
+            $datemintujuh = date( "Y-m-d", strtotime( "$dateperson -7 day" ) );
+            $laporan_mingguan = PersonInCharge::whereDate('created_at','<=',$dateperson)->whereDate('created_at','>=',$datemintujuh)->count();
+            if($laporan_mingguan == 0){
+                Notifikasi::insert([
+                    'id_dari'       => 0,
+                    'id_untuk'      => Auth::guard('users')->user()->id,
+                    'keterangan'    => 'Belum Membuat Laporan Mingguan Pada Minggu Ini',
+                    'status'        => 0
+                ]);
+            }
         }
 
         return 'success';

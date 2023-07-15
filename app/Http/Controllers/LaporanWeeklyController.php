@@ -30,7 +30,8 @@ class LaporanWeeklyController extends Controller
         }
 
         if(isset($_GET['id'])){
-            Session::flash('info','Belum Membuat Laporan Mingguan');
+            $notif = Notifikasi::where('id', $_GET['id'])->first();
+            Session::flash('info',$notif->keterangan);
             Notifikasi::where('id', $_GET['id'])->update(['status'=>1]);
         }
 

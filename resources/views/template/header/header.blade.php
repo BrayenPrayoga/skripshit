@@ -5,7 +5,7 @@
         <!-- BEGIN: Logo -->
         <a href="" class="-intro-x hidden md:flex">
             <img alt="Midone - HTML Admin Template" class="w-6" src="{{ asset('image/logo.svg') }}">
-            <span class="text-white text-lg ml-3"> Icewall </span>
+            <span class="text-white text-lg ml-3">  </span>
         </a>
         <!-- END: Logo -->
         <!-- BEGIN: Breadcrumb -->
@@ -16,114 +16,7 @@
             </ol>
         </nav>
         <!-- END: Breadcrumb -->
-        <!-- BEGIN: Search -->
-        <div class="intro-x relative mr-3 sm:mr-6" style="display:none;">
-            <div class="search hidden sm:block">
-                <input type="text" class="search__input form-control border-transparent" placeholder="Search...">
-                <i data-lucide="search" class="search__icon dark:text-slate-500"></i>
-            </div>
-            <a class="notification notification--light sm:hidden" href=""> <i data-lucide="search"
-                    class="notification__icon dark:text-slate-500"></i> </a>
-            <div class="search-result">
-                <div class="search-result__content">
-                    <div class="search-result__content__title">Pages</div>
-                    <div class="mb-5">
-                        <a href="" class="flex items-center">
-                            <div
-                                class="w-8 h-8 bg-success/20 dark:bg-success/10 text-success flex items-center justify-center rounded-full">
-                                <i class="w-4 h-4" data-lucide="inbox"></i> </div>
-                            <div class="ml-3">Mail Settings</div>
-                        </a>
-                        <a href="" class="flex items-center mt-2">
-                            <div
-                                class="w-8 h-8 bg-pending/10 text-pending flex items-center justify-center rounded-full">
-                                <i class="w-4 h-4" data-lucide="users"></i> </div>
-                            <div class="ml-3">Users & Permissions</div>
-                        </a>
-                        <a href="" class="flex items-center mt-2">
-                            <div
-                                class="w-8 h-8 bg-primary/10 dark:bg-primary/20 text-primary/80 flex items-center justify-center rounded-full">
-                                <i class="w-4 h-4" data-lucide="credit-card"></i> </div>
-                            <div class="ml-3">Transactions Report</div>
-                        </a>
-                    </div>
-                    <div class="search-result__content__title">Users</div>
-                    <div class="mb-5">
-                        <a href="" class="flex items-center mt-2">
-                            <div class="w-8 h-8 image-fit">
-                                <img alt="Midone - HTML Admin Template" class="rounded-full"
-                                    src="{{ asset('image/profile-2.jpg') }}">
-                            </div>
-                            <div class="ml-3">Al Pacino</div>
-                            <div class="ml-auto w-48 truncate text-slate-500 text-xs text-right">alpacino@left4code.com
-                            </div>
-                        </a>
-                        <a href="" class="flex items-center mt-2">
-                            <div class="w-8 h-8 image-fit">
-                                <img alt="Midone - HTML Admin Template" class="rounded-full"
-                                    src="{{ asset('image/profile-6.jpg') }}">
-                            </div>
-                            <div class="ml-3">Russell Crowe</div>
-                            <div class="ml-auto w-48 truncate text-slate-500 text-xs text-right">
-                                russellcrowe@left4code.com</div>
-                        </a>
-                        <a href="" class="flex items-center mt-2">
-                            <div class="w-8 h-8 image-fit">
-                                <img alt="Midone - HTML Admin Template" class="rounded-full"
-                                    src="{{ asset('image/profile-12.jpg') }}">
-                            </div>
-                            <div class="ml-3">Brad Pitt</div>
-                            <div class="ml-auto w-48 truncate text-slate-500 text-xs text-right">bradpitt@left4code.com
-                            </div>
-                        </a>
-                        <a href="" class="flex items-center mt-2">
-                            <div class="w-8 h-8 image-fit">
-                                <img alt="Midone - HTML Admin Template" class="rounded-full"
-                                    src="{{ asset('image/profile-3.jpg') }}">
-                            </div>
-                            <div class="ml-3">Johnny Depp</div>
-                            <div class="ml-auto w-48 truncate text-slate-500 text-xs text-right">
-                                johnnydepp@left4code.com</div>
-                        </a>
-                    </div>
-                    <div class="search-result__content__title">Products</div>
-                    <a href="" class="flex items-center mt-2">
-                        <div class="w-8 h-8 image-fit">
-                            <img alt="Midone - HTML Admin Template" class="rounded-full"
-                                src="{{ asset('image/preview-12.jpg') }}">
-                        </div>
-                        <div class="ml-3">Dell XPS 13</div>
-                        <div class="ml-auto w-48 truncate text-slate-500 text-xs text-right">PC &amp; Laptop</div>
-                    </a>
-                    <a href="" class="flex items-center mt-2">
-                        <div class="w-8 h-8 image-fit">
-                            <img alt="Midone - HTML Admin Template" class="rounded-full"
-                                src="{{ asset('image/preview-11.jpg') }}">
-                        </div>
-                        <div class="ml-3">Nikon Z6</div>
-                        <div class="ml-auto w-48 truncate text-slate-500 text-xs text-right">Photography</div>
-                    </a>
-                    <a href="" class="flex items-center mt-2">
-                        <div class="w-8 h-8 image-fit">
-                            <img alt="Midone - HTML Admin Template" class="rounded-full"
-                                src="{{ asset('image/preview-8.jpg') }}">
-                        </div>
-                        <div class="ml-3">Oppo Find X2 Pro</div>
-                        <div class="ml-auto w-48 truncate text-slate-500 text-xs text-right">Smartphone &amp; Tablet
-                        </div>
-                    </a>
-                    <a href="" class="flex items-center mt-2">
-                        <div class="w-8 h-8 image-fit">
-                            <img alt="Midone - HTML Admin Template" class="rounded-full"
-                                src="{{ asset('image/preview-8.jpg') }}">
-                        </div>
-                        <div class="ml-3">Nike Tanjun</div>
-                        <div class="ml-auto w-48 truncate text-slate-500 text-xs text-right">Sport &amp; Outdoor</div>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <!-- END: Search -->
+        @if(Auth::guard('users')->user()->role == 2 || Auth::guard('users')->user()->role == 4)
         <!-- BEGIN: Notifications -->
         @php
             $countNotifikasi = getNotifikasi('count');
@@ -138,8 +31,10 @@
                     <div class="notification-content__title">Notifications</div>
                     @foreach($getNotifikasi as $key=>$item)
                     <div class="cursor-pointer relative flex items-center @if($key != 0) mt-5 @endif"
-                    @if($item->status == 0)
+                    @if($item->status == 0 && Auth::guard('users')->user()->role == 2)
                     onclick="window.location='{{ url('pic-laporan-weekly?id='.$item->id) }}';"
+                    @else
+                    onclick="window.location='{{ url('manager-laporan-weekly?id='.$item->id) }}';"
                     @endif
                     >
                         <div class="w-12 h-12 flex-none image-fit mr-1">
@@ -151,7 +46,7 @@
                         </div>
                         <div class="ml-2 overflow-hidden">
                             <div class="flex items-center">
-                                <a href="javascript:;" class="font-medium truncate mr-5">System</a>
+                                <a href="javascript:;" class="font-medium truncate mr-5">{{ ($item->id_dari == 0) ? 'System' : $item->Users->name }}</a>
                                 <div class="text-xs text-slate-400 ml-auto whitespace-nowrap">{{ date("H:i", strtotime($item->created_at)) }}</div>
                             </div>
                             <div class="w-full truncate text-slate-500 mt-0.5">{{ $item->keterangan }}</div>
@@ -162,6 +57,12 @@
             </div>
         </div>
         <!-- END: Notifications -->
+        @endif
+        <!-- BEGIN: Search -->
+        <div class="intro-x relative mr-3 sm:mr-6">
+            <button type="button" class="btn btn-sm btn-danger" data-tw-toggle="modal" data-tw-target="#atp-modal">REMINDER ATP</button>
+        </div>
+        <!-- END: Search -->
         <!-- BEGIN: Account Menu -->
         <div class="intro-x dropdown w-8 h-8">
             <div class="dropdown-toggle w-8 h-8 rounded-full overflow-hidden shadow-lg image-fit zoom-in scale-110"
@@ -208,3 +109,32 @@
     </div>
 </div>
 <!-- END: Top Bar -->
+
+<!-- BEGIN: Reminder ATP Modal -->
+<div id="atp-modal" class="modal" tabindex="-1" aria-hidden="true" data-tw-backdrop="static">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="font-medium text-base mr-auto">Reminder ATP</h2>
+            </div>
+            <form method="POST" action="{{ route('reminder.simpan') }}">
+                <div class="modal-body grid grid-cols-12 gap-4 gap-y-3">
+                    {{ csrf_field() }}
+                    <div class="col-span-12 sm:col-span-6">
+                        <label for="modal-form-6" class="form-label">Tanggal</label>
+                        <input type="text" class="form-control" name="tanggal" id="tanggal_atp" placeholder="..." required>
+                    </div>
+                    <div class="col-span-12 sm:col-span-12">
+                        <label for="modal-form-5" class="form-label">Noted</label>
+                        <textarea rows="4" class="form-control" name="noted" id="noted" placeholder="..." required></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" data-tw-dismiss="modal"class="btn btn-outline-secondary w-20 mr-1">Cancel</button>
+                    <button type="submit" class="btn btn-primary w-20">Simpan</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- END: Reminder ATP Modal -->

@@ -30,6 +30,10 @@ Route::namespace('App\Http\Controllers')->group(function () {
     });
 
     Route::get('dashboard', 'DashboardController@index')->name('dashboard.index');
+    Route::get('dashboard/bar-chart', 'DashboardController@getDataBarChart')->name('dashboard.getDataBarChart');
+    Route::get('dashboard/pie-chart', 'DashboardController@getDataPieChart')->name('dashboard.getDataPieChart');
+    
+    Route::post('header/reminder-atp', 'ReminderController@simpan')->name('reminder.simpan');
 
     Route::group(['middleware' => ['auth:users','AksesHelpdesk']], function() { 
         Route::group(['prefix'=>'helpdesk-tiket','as'=>'helpdesk.tiket.'], function(){

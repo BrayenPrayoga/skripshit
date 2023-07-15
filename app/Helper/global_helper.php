@@ -41,7 +41,7 @@ if (! function_exists('PushKeNotifikasi')) {
     function PushKeNotifikasi()
     {
         $hari = date('w');
-        if($hari = 5){
+        if($hari == 5){
             $dateperson = date( "Y-m-d");
             $datemintujuh = date( "Y-m-d", strtotime( "$dateperson -7 day" ) );
             $laporan_mingguan = PersonInCharge::whereDate('created_at','<=',$dateperson)->whereDate('created_at','>=',$datemintujuh)->count();

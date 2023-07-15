@@ -16,4 +16,9 @@ class Notifikasi extends Model
     public $timestamps = false;
 
     protected $softDelete = false;
+
+    public function Users()
+    {
+        return $this->belongsTo('App\Models\User','id_dari','id')->withDefault();
+    }
 }

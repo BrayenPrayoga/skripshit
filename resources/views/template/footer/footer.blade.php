@@ -8,6 +8,15 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
 <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+
+<script>
+    $(document).ready(function(){
+        flatpickr("#tanggal_atp", {
+            enableTime: true,
+            dateFormat: "Y-m-d H:i"
+        });
+    })
+</script>
 <!-- END: JS Assets-->
 
 @if(Session::has('success'))
